@@ -8,8 +8,8 @@ import MyNavbar from '../components/MyNavbar';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function MealsPage() {
-    const store = mealsStore();
     const navigate = useNavigate();
+    const store = mealsStore();
 
     const _id = useParams();
 

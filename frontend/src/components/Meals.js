@@ -2,7 +2,7 @@ import mealsStore from "../stores/mealsStore";
 import React from 'react';
 import CreateForm from './MealCreateForm';
 import UpdateForm from "./MealUpdateForm";
-import DateAccordion from "./DateAccordion";
+import DateAccordion from "./MealsDateAccordion";
 import Accordion from 'react-bootstrap/Accordion';
 
 export default function Meals({log_id}) {

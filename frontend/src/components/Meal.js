@@ -20,8 +20,10 @@ export default function Meal({meal}) {
       }
     });
 
+
     useEffect(() => {
       store2.fetchFoods(meal._id);
+      // eslint-disable-next-line
     }, []);
 
     function CustomToggle({ children, eventKey }) {

@@ -1,2 +1,6 @@
 #DB URI
 server/.env
+
+#Node modules
+frontend/node_modules/
+server/node_modules/

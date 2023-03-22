@@ -1,9 +1,15 @@
 import Table from 'react-bootstrap/Table';
 import foodsStore from '../stores/foodsStore';
+import mealsStore from '../stores/mealsStore';
 import Food from './Food';
 
 export default function FoodsTable({meal_id}) {
     const store = foodsStore();
+    const store2 = mealsStore(store2 => {
+        return {
+            meals: store2.meals
+        }
+    });
     let protein = 0, carbs = 0, fat = 0, calories = 0;
 
     return(
@@ -54,3 +60,14 @@ export default function FoodsTable({meal_id}) {
     </form>
     );
 }
+
+/*
+{store2.meals && store2.meals.map(meal => {
+    if(meal._id === meal_id) {
+        meal.protein = protein;
+        meal.carbs = carbs;
+        meal.fat = fat;
+        meal.calories = calories;
+    }
+})}
+*/
