@@ -1,0 +1,19 @@
+#navbar {
+    justify-content: space-between;
+}
+
+.body {
+    padding-top: 10%;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+.form {
+    width: 50%;
+}
+
+td > input {
+    width: 100%;
+}
