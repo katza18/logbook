@@ -4,6 +4,10 @@ const mealSchema = new mongoose.Schema({
     title: String,
     body: String,
     date: Date,
+    calories: String,
+    protein: String,
+    carbs: String,
+    fat: String,
     log: {
         type:mongoose.Schema.Types.ObjectId, ref: "Log"
     },

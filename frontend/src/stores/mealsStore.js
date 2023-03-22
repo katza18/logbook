@@ -130,6 +130,21 @@ const mealsStore = create((set) => ({
                 title: "", body: "", _id: null, date: null
             }
         });
+    },
+
+    setMacros: async (protein, carbs, fat, calories, meal_id) => {
+        const { meals } = mealsStore.getState();
+        const res = await axios.put(`/meals/${meal_id}`, {calories, protein, carbs, fat});
+
+        const newMeals = [...meals];
+        const mealIndex = meals.findIndex((meal) => {
+            return meal._id === meal_id;
+        });
+        newMeals[mealIndex] = res.data.meal;
+
+        set({
+            meals: newMeals,
+        })
     }
   }));
 

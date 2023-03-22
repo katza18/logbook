@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import foodsStore from '../stores/foodsStore';
 import mealsStore from '../stores/mealsStore';
@@ -7,10 +8,38 @@ export default function FoodsTable({meal_id}) {
     const store = foodsStore();
     const store2 = mealsStore(store2 => {
         return {
-            meals: store2.meals
+            meals: store2.meals,
+            setMacros: store2.setMacros
         }
     });
+
     let protein = 0, carbs = 0, fat = 0, calories = 0;
+
+    useEffect(() => {
+
+        if (store.foods) store.foods.forEach(food => {
+            if (food.meal && food.meal.localeCompare(meal_id) === 0) {
+                // eslint-disable-next-line
+                if(food.protein) protein += parseInt(food.protein);
+                // eslint-disable-next-line
+                if(food.carbs) carbs += parseInt(food.carbs);
+                // eslint-disable-next-line
+                if(food.fat) fat += parseInt(food.fat);
+                // eslint-disable-next-line
+                if(food.calories) calories += parseInt(food.calories);
+            }
+        })
+        if(store2.meals) store2.meals.forEach(meal => {
+            try {
+                if(meal._id.localeCompare(meal_id) === 0) {
+                    store2.setMacros(protein, carbs, fat, calories, meal._id);
+                }
+            } catch(err) {
+                console.log(err);
+            }
+        })
+        // eslint-disable-next-line
+        }, []);
 
     return(
     <form form="update" onSubmit={store.updateFood}>
@@ -30,44 +59,31 @@ export default function FoodsTable({meal_id}) {
         <tbody>
             {/* eslint-disable-next-line*/}
             {store.foods && store.foods.map(food => {
-                try {
-                    if (food.meal && food.meal.localeCompare(meal_id) === 0) {
-                        if(food.protein) protein += parseInt(food.protein);
-                        if(food.carbs) carbs += parseInt(food.carbs);
-                        if(food.fat) fat += parseInt(food.fat);
-                        if(food.calories) calories += parseInt(food.calories);
-                        return <Food food={food} key={food._id} />;
-                    }
-                } catch(err) {
-                    console.log(err);
+                if (food.meal && food.meal.localeCompare(meal_id) === 0)
+                    return <Food food={food} key={food._id} />;
+            })}
+            {/* eslint-disable-next-line */}
+            {store2.meals && store2.meals.map(meal => {
+                if(meal._id.localeCompare(meal_id) === 0) {
+                    return(
+                        <tr key={meal._id}>
+                            <th></th>
+                            <th>Totals:</th>
+                            <th>{meal.protein}</th>
+                            <th>{meal.carbs}</th>
+                            <th>{meal.fat}</th>
+                            <th>{meal.calories}</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                );
                 }
             })}
-            <tr>
-                <th></th>
-                <th>Totals:</th>
-                <th>{protein}</th>
-                <th>{carbs}</th>
-                <th>{fat}</th>
-                <th>{calories}</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
         </tbody>
     </Table>
-    <button onClick={(e) => store.createFood(e, meal_id)}>Add</button>
-    {store.updateForm._id && <button type="submit">Update</button>}
+        <button onClick={(e) => store.createFood(e, meal_id)}>Add</button>
+        {store.updateForm._id && <button type="submit">Update</button>}
     </form>
     );
 }
-
-/*
-{store2.meals && store2.meals.map(meal => {
-    if(meal._id === meal_id) {
-        meal.protein = protein;
-        meal.carbs = carbs;
-        meal.fat = fat;
-        meal.calories = calories;
-    }
-})}
-*/

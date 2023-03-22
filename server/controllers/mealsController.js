@@ -1,5 +1,5 @@
 const Meal = require('../models/meal.js');
-const Exercise = require('../models/exercise');
+const Food = require('../models/food');
 
 const fetchMeals = async (req, res) => {
     try {
@@ -32,6 +32,10 @@ const createMeal = async (req, res) => {
             title: title,
             body: body,
             date: date,
+            calories: "",
+            protein: "",
+            carbs: "",
+            fat: "",
             user: req.user._id,
             log: log
         });
@@ -46,12 +50,16 @@ const createMeal = async (req, res) => {
 const updateMeal = async (req, res) => {
     try {
         const mealId = req.params.id;
-        const {title, body, date} = req.body;
+        const {title, body, date, protein, carbs, fat, calories} = req.body;
 
         await Meal.findOneAndUpdate({ _id: mealId, user: req.user._id } , {
             title: title,
             body: body,
             date: date,
+            protein,
+            carbs,
+            fat,
+            calories
         });
 
         const meal = await Meal.findById(mealId);
@@ -69,7 +77,7 @@ const deleteMeal = async (req, res) => {
 
         //delete the meal and all of its exercises
         await Meal.deleteOne({ _id: mealId, user: req.user._id });
-        await Exercise.deleteMany({ meal: mealId });
+        await Food.deleteMany({ meal: mealId });
 
         res.json({ success: "Meal deleted" });
     } catch (err) {

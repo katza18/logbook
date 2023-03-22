@@ -14,18 +14,21 @@ export default function DateAccordion({date, log_id}) {
 
     return (
         <Accordion.Item eventKey={date} className="card">
+            {store.meals && store.meals.forEach(meal => {
+                    if(meal.log && meal.date && meal.log.localeCompare(log_id.id) === 0 && meal.date.localeCompare(date) === 0){
+                        calories += parseInt(meal.calories);
+                        protein += parseInt(meal.protein);
+                        carbs += parseInt(meal.carbs);
+                        fat += parseInt(meal.fat);
+                    }
+            })}
             <Accordion.Header>
                 {date.substring(0, 10)}: Calories: {calories} | Protein: {protein} | Carbs: {carbs} | Fat: {fat}
             </Accordion.Header>
             <Accordion.Body>
+                {/* eslint-disable-next-line */}
                 {store.meals && store.meals.map(meal => {
                     if(meal.log && meal.date && meal.log.localeCompare(log_id.id) === 0 && meal.date.localeCompare(date) === 0){
-                        {/*
-                        calories += meal.calories;
-                        protein += meal.protein;
-                        carbs += meal.carbs;
-                        fat += meal.fats;
-                        */}
                         return <Meal meal={meal} key={meal._id} />
                     }
                 })}

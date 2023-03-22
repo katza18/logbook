@@ -39,7 +39,7 @@ export default function Meal({meal}) {
           <Card className="card">
             <Card.Header>
               <h3>{meal.title}</h3>
-              <p>{meal.date.substring(0, 10)}</p>
+              {meal.body && <p>{meal.body}</p>}
               <button onClick={() => store.deleteMeal(meal._id)}>Delete</button>
               <button onClick={() => store.toggleUpdate(meal)}>Update</button>
               <CustomToggle eventKey="0">View</CustomToggle>
