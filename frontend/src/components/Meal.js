@@ -37,13 +37,12 @@ export default function Meal({meal}) {
     return (
         <div key={meal._id}>
           <Accordion defaultActiveKey="0">
-          <Card>
+          <Card className="card">
             <Card.Header>
               <h3>{meal.title}</h3>
               <p>{meal.date.substring(0, 10)}</p>
               <button onClick={() => store.deleteMeal(meal._id)}>Delete</button>
               <button onClick={() => store.toggleUpdate(meal)}>Update</button>
-              {/*<button onClick={() => navigate(`/meals/${meal._id}/foods`)}>View</button>*/}
               <CustomToggle eventKey="0">View</CustomToggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">

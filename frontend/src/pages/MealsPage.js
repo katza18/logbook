@@ -28,9 +28,6 @@ export default function MealsPage() {
                     <button onClick={() => navigate(-1)}>Back</button>
                     <Meals log_id={_id} />
                 </Col>
-                <Col>
-                    <UpdateForm />
-                </Col>
             </Row>
         </Container>
     );

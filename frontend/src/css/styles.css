@@ -6,6 +6,16 @@
     padding-top: 10%;
 }
 
+.central-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    width: 50vw;
+}
+
 .delete:hover {
     cursor: pointer;
 }
