@@ -14,6 +14,7 @@
 
 .card {
     width: 50vw;
+    overflow: scroll;
 }
 
 .delete:hover {

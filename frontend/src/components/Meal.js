@@ -1,6 +1,5 @@
 import mealsStore from "../stores/mealsStore";
 import React, {useEffect} from 'react';
-import { useNavigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import FoodsTable from "./FoodsTable";
@@ -15,14 +14,12 @@ export default function Meal({meal}) {
             toggleUpdate: store.toggleUpdate
         };
     });
-
-    const navigate = useNavigate();
-
     const store2 = foodsStore(store2 => {
       return {
         fetchFoods: store2.fetchFoods
       }
     });
+
     useEffect(() => {
       store2.fetchFoods(meal._id);
     }, []);
@@ -36,7 +33,7 @@ export default function Meal({meal}) {
 
     return (
         <div key={meal._id}>
-          <Accordion defaultActiveKey="0">
+          <Accordion>
           <Card className="card">
             <Card.Header>
               <h3>{meal.title}</h3>

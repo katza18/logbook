@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Meals from '../components/Meals';
-import UpdateForm from '../components/MealUpdateForm.js';
 import mealsStore from '../stores/mealsStore';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
