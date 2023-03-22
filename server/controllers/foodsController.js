@@ -35,7 +35,6 @@ const createFood = async (req, res) => {
             log
         });
 
-        console.log(myFood);
         res.json({myFood});
     } catch(err) {
         console.log(err);

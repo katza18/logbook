@@ -25,7 +25,7 @@ export default function FoodsTable({meal_id}) {
             {/* eslint-disable-next-line*/}
             {store.foods && store.foods.map(food => {
                 try {
-                    if (food.meal && food.meal.localeCompare(meal_id.id) === 0) {
+                    if (food.meal && food.meal.localeCompare(meal_id) === 0) {
                         if(food.protein) protein += parseInt(food.protein);
                         if(food.carbs) carbs += parseInt(food.carbs);
                         if(food.fat) fat += parseInt(food.fat);
@@ -49,7 +49,7 @@ export default function FoodsTable({meal_id}) {
             </tr>
         </tbody>
     </Table>
-    <button onClick={(e) => store.createFood(e, meal_id.id)}>Add</button>
+    <button onClick={(e) => store.createFood(e, meal_id)}>Add</button>
     {store.updateForm._id && <button type="submit">Update</button>}
     </form>
     );
