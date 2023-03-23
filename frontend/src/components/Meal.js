@@ -2,6 +2,7 @@ import mealsStore from "../stores/mealsStore";
 import React, {useEffect} from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
 import FoodsTable from "./FoodsTable";
 import foodsStore from "../stores/foodsStore";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
@@ -35,19 +36,17 @@ export default function Meal({meal}) {
 
     return (
         <div key={meal._id}>
-          <Accordion>
-          <Card className="card">
-            <Card.Header>
+          <Accordion className="card">
+            <Accordion.Item eventKey={meal._id}>
+            <Accordion.Header>
               <h3>{meal.title}</h3>
-              {meal.body && <p>{meal.body}</p>}
-              <button onClick={() => store.deleteMeal(meal._id)}>Delete</button>
-              <button onClick={() => store.toggleUpdate(meal)}>Update</button>
-              <CustomToggle eventKey="0">View</CustomToggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body><FoodsTable meal_id={meal._id} /></Card.Body>
-            </Accordion.Collapse>
-          </Card>
+              <span className="material-symbols-outlined delete" onClick={() => store.deleteMeal(meal._id)}>delete</span>
+              <span className="material-symbols-outlined edit" variant="secondary" onClick={() => store.toggleUpdate(meal)}>edit_square</span>
+            </Accordion.Header>
+            <Accordion.Body eventKey="0">
+              <FoodsTable meal_id={meal._id} />
+            </Accordion.Body>
+            </Accordion.Item>
           </Accordion>
         </div>
       );

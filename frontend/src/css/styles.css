@@ -13,7 +13,8 @@
 }
 
 .card {
-    width: 50vw;
+
+    width: 100%;
     overflow: scroll;
 }
 
@@ -23,6 +24,16 @@
 
 .form {
     width: 50%;
+}
+
+.delete {
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-top: 0.25em;
+}
+
+.delete, .edit {
+    padding-bottom: 0.5em;
 }
 
 .create-button {
