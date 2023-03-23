@@ -9,6 +9,10 @@ const mealsStore = create((set) => ({
         title: "",
         body: "",
         date: "",
+        protein: "",
+        carbs: "",
+        fat: "",
+        calories: "",
         log: null,
         _id: null
     },
@@ -92,7 +96,7 @@ const mealsStore = create((set) => ({
         });
 
         set({
-            meal: newMeals
+            meals: newMeals
         });
     },
 

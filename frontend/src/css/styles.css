@@ -25,6 +25,10 @@
     width: 50%;
 }
 
+.create-button {
+    margin-top: 1em;
+}
+
 td > input {
     width: 100%;
 }

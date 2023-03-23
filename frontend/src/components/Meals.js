@@ -4,6 +4,7 @@ import CreateForm from './MealCreateForm';
 import UpdateForm from "./MealUpdateForm";
 import DateAccordion from "./MealsDateAccordion";
 import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
 
 export default function Meals({log_id}) {
     const store = mealsStore();
@@ -28,14 +29,14 @@ export default function Meals({log_id}) {
 
             {convertSet(set)}
 
-            <Accordion>
+            <Accordion alwaysOpen>
                 {arr && arr.map(date => {
                     return <DateAccordion date={date} log_id={log_id} key={date}/>
                 })}
             </Accordion>
 
             <CreateForm log_id={log_id} />
-            <button onClick={() => store.toggleCreate()}>Create New Meal</button>
+            <Button variant="primary" className="create-button" onClick={() => store.toggleCreate()}>Create New Meal</Button>
             <UpdateForm />
         </div>
     );
