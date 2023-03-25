@@ -49,7 +49,7 @@ export default function ExercisesTable({workout_id}) {
                 })}
             </tbody>
             </Table>
-            <Button onClick={(e) => store.createExercise(e, workout_id)}>Add Row</Button>
+            <Button onClick={(e) => store.createExercise(e, workout_id)}>Add Exercise</Button>
             {store.updating && <Button type="submit">Update</Button>}
         </form>
     </Col>

@@ -73,9 +73,25 @@ const exercisesStore = create((set) => ({
 
         const res = await axios.post("/exercises", emptyExercise);
 
+        const exercise = res.data.myExercise;
+
         set({
-            exercises: [...exercises, res.data.myExercise]
+            exercises: [...exercises, exercise],
+            updateForm: {
+                name: exercise.name,
+                weight: exercise.weight,
+                sets: exercise.sets,
+                reps: exercise.reps,
+                intensity: exercise.intensity,
+                muscle: exercise.muscle,
+                notes: exercise.notes,
+                _id: exercise._id,
+                workout: exercise.workout,
+                log: exercise.log
+            },
+            updating: true
         });
+
         set((state) => {
             return {
                 emptyExercise: {
@@ -97,7 +113,8 @@ const exercisesStore = create((set) => ({
         });
 
         set({
-            exercises: newExercises
+            exercises: newExercises,
+            updating: false
         });
     },
 
