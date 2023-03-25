@@ -1,6 +1,8 @@
 import logsStore from "../stores/logsStore";
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 export default function Log({log}) {
   const navigate = useNavigate();
@@ -17,11 +19,14 @@ export default function Log({log}) {
   const path = `/logs/${log._id}/${option}`;
 
   return (
-      <div key={log._id}>
-        <h3>{log.title}</h3>
-        <button onClick={() => store.deleteLog(log._id)}>Delete</button>
-        <button onClick={() => store.toggleUpdate(log)}>Update</button>
-        <button onClick={() => navigate(path)}>View</button>
-      </div>
+        <Card bg="primary" className="log">
+          <Card.Header>{log.title}</Card.Header>
+          <Card.Body>
+            <p>{log.body}</p>
+            <Button onClick={() => store.deleteLog(log._id)}>Delete</Button>
+            <Button onClick={() => store.toggleUpdate(log)}>Update</Button>
+            <Button onClick={() => navigate(path)}>View</Button>
+          </Card.Body>
+        </Card>
     );
 }

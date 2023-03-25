@@ -14,10 +14,9 @@ export default function ExercisesTable({workout_id}) {
 
 
     return(
-    <Row className="body">
+    <Row>
     <Col>
-        <button onClick={() => navigate(-1)}>Back</button>
-        <h1>Exercises</h1>
+        <h2>Exercises</h2>
         <form form="update" onSubmit={store.updateExercise}>
             <Table striped bordered hover variant="dark">
             <thead>
@@ -37,9 +36,10 @@ export default function ExercisesTable({workout_id}) {
                 {/* eslint-disable-next-line*/}
                 {store.exercises && store.exercises.map(exercise => {
                     try {
-                        if (exercise.workout && exercise.workout.localeCompare(workout_id.id) === 0) {
+                        if (exercise.workout && exercise.workout.localeCompare(workout_id) === 0) {
                             if(exercise.reps) reps += (parseInt(exercise.reps) * parseInt(exercise.sets)) ;
                             if(exercise.sets) sets += parseInt(exercise.sets);
+                            console.log("returning exercise");
                             return <Exercise number={count++} exercise={exercise} key={exercise._id} />;
                         }
                     } catch(err) {
@@ -48,7 +48,7 @@ export default function ExercisesTable({workout_id}) {
                 })}
             </tbody>
             </Table>
-            <button onClick={(e) => store.createExercise(e, workout_id.id)}>Add</button>
+            <button onClick={(e) => store.createExercise(e, workout_id)}>Add</button>
             {store.updating && <button type="submit">Update</button>}
         </form>
     </Col>

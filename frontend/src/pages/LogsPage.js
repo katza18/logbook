@@ -23,8 +23,6 @@ export default function LogsPage() {
             <Row className="body">
                 <Col>
                     <Logs />
-                </Col>
-                <Col>
                     <UpdateForm />
                     <CreateForm />
                 </Col>

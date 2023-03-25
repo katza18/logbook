@@ -6,7 +6,7 @@ import Meal from './Meal';
 export default function DateAccordion({date, log_id}) {
     const store = mealsStore(store => {
         return {
-            meals : store.meals
+            meals: store.meals
         }
     });
 

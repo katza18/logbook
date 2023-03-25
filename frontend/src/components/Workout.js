@@ -1,9 +1,10 @@
 import workoutsStore from "../stores/workoutsStore";
-import React from 'react';
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import ExercisesTable from './ExercisesTable';
+import exercisesStore from "../stores/exercisesStore";
 
 export default function Workout({workout}) {
-  const navigate = useNavigate();
 
   const store = workoutsStore(store => {
         return {
@@ -12,13 +13,31 @@ export default function Workout({workout}) {
         };
     });
 
-    return (
-        <div key={workout._id}>
-          <h3>{workout.title}</h3>
-          <h4>{workout.date.substring(0, 10)}</h4>
-          <button onClick={() => store.deleteWorkout(workout._id)}>Delete</button>
-          <button onClick={() => store.toggleUpdate(workout)}>Update</button>
-          <button onClick={() => navigate(`/workouts/${workout._id}/exercises`)}>View</button>
-        </div>
-      );
+  const store2 = exercisesStore(store2 => {
+    return {
+      fetchExercises: store2.fetchExercises
+    }
+  });
+
+  useEffect(() => {
+    store2.fetchExercises(workout._id);
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <div key={workout._id}>
+      <Accordion className="card">
+        <Accordion.Item eventKey={workout._id}>
+        <Accordion.Header>
+          <h3>{workout.title}: {workout.date.substring(5, 10)}</h3>
+          <span className="material-symbols-outlined delete" onClick={() => store.deleteWorkout(workout._id)}>delete</span>
+          <span className="material-symbols-outlined edit" onClick={() => store.toggleUpdate(workout)}>edit_square</span>
+        </Accordion.Header>
+        <Accordion.Body eventKey="0">
+          <ExercisesTable workout_id={workout._id} />
+        </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </div>
+  );
 }

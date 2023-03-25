@@ -2,20 +2,48 @@ import workoutsStore from "../stores/workoutsStore";
 import React from 'react';
 import Workout from "./Workout";
 import CreateForm from './WorkoutCreateForm';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+import UpdateForm from './WorkoutUpdateForm';
+import DateAccordion from "./WorkoutsDateAccordion";
 
 export default function Workouts({log_id}) {
     const store = workoutsStore();
+    const set = new Set();
+    const arr = [];
+
+    function convertSet(set) {
+        for(const item of set) {
+            arr.push(item);
+        }
+    }
 
     return(
-        <div>
-            <h2>Workouts: </h2>
+        <div className="central-items">
+            <h2>Workouts</h2>
+
             {store.workouts && store.workouts.map(workout => {
                 if(workout.log && workout.log.localeCompare(log_id.id) === 0){
-                    return <Workout workout={workout} key={workout._id} />
+                    set.add(workout.date);
                 }
             })}
+
+            {convertSet(set)}
+
+            <Accordion alwaysOpen>
+                {/*arr && arr.map(date => {
+                    return <DateAccordion date={date} log_id={log_id} key={date}/>
+                })*/}
+                {store.workouts && store.workouts.map(workout => {
+                    if(workout.log && workout.log.localeCompare(log_id.id) === 0){
+                        return <Workout workout={workout} key={workout._id} />
+                    }
+                })}
+            </Accordion>
+
             <CreateForm log_id={log_id} />
-            <button onClick={() => store.toggleCreate()}>Create New Workout</button>
+            <Button variant="primary" className="create-button" onClick={() => store.toggleCreate()}>Create New Meal</Button>
+            <UpdateForm />
         </div>
     );
 }
