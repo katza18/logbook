@@ -5,6 +5,7 @@ import ExerciseStats from './ExerciseStats';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 export default function ExercisesTable({workout_id}) {
     const store = exercisesStore();
@@ -48,8 +49,8 @@ export default function ExercisesTable({workout_id}) {
                 })}
             </tbody>
             </Table>
-            <button onClick={(e) => store.createExercise(e, workout_id)}>Add</button>
-            {store.updating && <button type="submit">Update</button>}
+            <Button onClick={(e) => store.createExercise(e, workout_id)}>Add Row</Button>
+            {store.updating && <Button type="submit">Update</Button>}
         </form>
     </Col>
         <Col>

@@ -19,14 +19,14 @@ export default function Log({log}) {
   const path = `/logs/${log._id}/${option}`;
 
   return (
-        <Card bg="primary" className="log">
-          <Card.Header>{log.title}</Card.Header>
-          <Card.Body>
-            <p>{log.body}</p>
-            <Button onClick={() => store.deleteLog(log._id)}>Delete</Button>
-            <Button onClick={() => store.toggleUpdate(log)}>Update</Button>
-            <Button onClick={() => navigate(path)}>View</Button>
-          </Card.Body>
-        </Card>
-    );
+    <Card bg="primary">
+      <Card.Header>{log.title}</Card.Header>
+      <Card.Body>
+        <p>{log.body}</p>
+        <Button onClick={() => store.deleteLog(log._id)}>Delete</Button>
+        <Button onClick={() => store.toggleUpdate(log)}>Update</Button>
+        <Button onClick={() => navigate(path)}>Open</Button>
+      </Card.Body>
+    </Card>
+  );
 }

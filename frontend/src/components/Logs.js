@@ -2,7 +2,8 @@ import logsStore from "../stores/logsStore";
 import React from 'react';
 import Log from "./Log";
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default function Logs({logIn}) {
     const store = logsStore();
