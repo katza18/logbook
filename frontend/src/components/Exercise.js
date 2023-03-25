@@ -18,8 +18,8 @@ export default function Exercise({exercise, number}) {
             <td>{exercise.intensity}</td>
             <td>{exercise.muscle}</td>
             <td>{exercise.notes}</td>
-            <td className="delete" onClick={() => store.deleteExercise(exercise._id)}>X</td>
-            <td onClick={() => store.toggleUpdate(exercise)}>Update</td>
+            <td onClick={() => store.deleteExercise(exercise._id)}><span className="material-symbols-outlined delete">delete</span></td>
+            <td onClick={() => store.toggleUpdate(exercise)}><span className="material-symbols-outlined edit">edit_square</span></td>
         </tr>
     );
 }

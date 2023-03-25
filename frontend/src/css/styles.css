@@ -17,7 +17,7 @@
     overflow: scroll;
 }
 
-.delete:hover {
+.delete:hover, .edit:hover {
     cursor: pointer;
 }
 
@@ -33,6 +33,11 @@
 
 .delete, .edit {
     padding-bottom: 0.5em;
+}
+
+td > span.delete {
+    padding-top: 3px;
+    margin: 0;
 }
 
 .create-button {
