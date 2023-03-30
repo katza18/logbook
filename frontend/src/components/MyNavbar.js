@@ -19,12 +19,9 @@ export default function MyNavbar() {
             </Nav.Item>
 
             <Nav.Item as="li">
-                <LinkContainer to="/"><Nav.Link className="nav-button">Exercise</Nav.Link></LinkContainer>
+                <LinkContainer to="/build"><Nav.Link className="nav-button">Build a Program</Nav.Link></LinkContainer>
             </Nav.Item>
 
-            <Nav.Item as="li">
-                <LinkContainer to="/"><Nav.Link className="nav-button">Nutrition</Nav.Link></LinkContainer>
-            </Nav.Item>
         </Nav>
         <Nav defaultActiveKey="/" as="ul" id="navbar-right">
             {store.loggedIn &&
