@@ -20,7 +20,7 @@ export default function Workouts({log_id}) {
 
     return(
         <div className="central-items">
-            <h2>Workouts</h2>
+            <h1>Workouts</h1>
 
             {store.workouts && store.workouts.map(workout => {
                 if(workout.log && workout.log.localeCompare(log_id.id) === 0){

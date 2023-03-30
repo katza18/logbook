@@ -31,6 +31,10 @@
     padding-top: 0.25em;
 }
 
+.edit {
+    margin-right: 1em;
+}
+
 .delete, .edit {
     padding-bottom: 0.5em;
 }
@@ -39,6 +43,11 @@ td > span.delete {
     padding-top: 3px;
     margin: 0;
 }
+
+td > span.edit {
+    margin-right: 0;
+}
+
 
 .create-button {
     margin-top: 1em;

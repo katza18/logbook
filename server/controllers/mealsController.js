@@ -32,10 +32,10 @@ const createMeal = async (req, res) => {
             title: title,
             body: body,
             date: date,
-            calories: "",
-            protein: "",
-            carbs: "",
-            fat: "",
+            calories: "0",
+            protein: "0",
+            carbs: "0",
+            fat: "0",
             user: req.user._id,
             log: log
         });
@@ -56,10 +56,10 @@ const updateMeal = async (req, res) => {
             title: title,
             body: body,
             date: date,
-            protein,
-            carbs,
-            fat,
-            calories
+            protein: protein,
+            carbs: carbs,
+            fat: fat,
+            calories: calories
         });
 
         const meal = await Meal.findById(mealId);

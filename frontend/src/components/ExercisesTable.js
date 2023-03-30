@@ -40,7 +40,6 @@ export default function ExercisesTable({workout_id}) {
                         if (exercise.workout && exercise.workout.localeCompare(workout_id) === 0) {
                             if(exercise.reps) reps += (parseInt(exercise.reps) * parseInt(exercise.sets)) ;
                             if(exercise.sets) sets += parseInt(exercise.sets);
-                            console.log("returning exercise");
                             return <Exercise number={count++} exercise={exercise} key={exercise._id} />;
                         }
                     } catch(err) {

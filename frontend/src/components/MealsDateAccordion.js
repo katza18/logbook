@@ -14,22 +14,22 @@ export default function DateAccordion({date, log_id}) {
 
     return (
         <Accordion.Item eventKey={date} className="card">
-            {store.meals && store.meals.forEach(meal => {
-                    if(meal.log && meal.date && meal.log.localeCompare(log_id.id) === 0 && meal.date.localeCompare(date) === 0){
-                        calories += parseInt(meal.calories);
-                        protein += parseInt(meal.protein);
-                        carbs += parseInt(meal.carbs);
-                        fat += parseInt(meal.fat);
-                    }
-            })}
             <Accordion.Header>
-                {date.substring(0, 10)}: Calories: {calories} | Protein: {protein} | Carbs: {carbs} | Fat: {fat}
+                {store.meals && store.meals.forEach(meal => {
+                    if (meal.date === date) {
+                        calories += parseInt(meal.calories);
+                        fat += parseInt(meal.fat);
+                        carbs += parseInt(meal.carbs);
+                        protein += parseInt(meal.protein);
+                    }
+                })}
+                {date.substring(5,10)}: Calories - {calories} | Protein - {protein} | Carbs - {carbs} | fat - {fat} |
             </Accordion.Header>
             <Accordion.Body>
                 {/* eslint-disable-next-line */}
                 {store.meals && store.meals.map(meal => {
                     if(meal.log && meal.date && meal.log.localeCompare(log_id.id) === 0 && meal.date.localeCompare(date) === 0){
-                        return <Meal meal={meal} key={meal._id} />
+                        return <Meal meal={meal} log_id={meal.log} key={meal._id} />
                     }
                 })}
             </Accordion.Body>

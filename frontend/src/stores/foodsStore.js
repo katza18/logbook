@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import axios from 'axios';
+import mealsStore from './mealsStore';
+
 
 const foodsStore = create((set) => ({
     foods: null,
