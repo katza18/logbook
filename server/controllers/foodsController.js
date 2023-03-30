@@ -58,6 +58,8 @@ const updateFood = async (req, res) => {
             log
         } = req.body;
 
+        const oldFood = await Food.findOne({ _id: foodId, user: req.user._id });
+
         await Food.findOneAndUpdate({ _id: foodId, user: req.user._id } , {
             serving,
             name,
@@ -73,10 +75,10 @@ const updateFood = async (req, res) => {
         const thisMeal = await Meal.findOne({ _id: meal, user: req.user._id});
 
         await Meal.findOneAndUpdate({ _id: meal, user: req.user._id}, {
-            protein: parseInt(thisMeal.protein) + parseInt(protein),
-            carbs: parseInt(thisMeal.carbs) + parseInt(carbs),
-            fat: parseInt(thisMeal.fat) + parseInt(fat),
-            calories: parseInt(thisMeal.calories) + parseInt(calories)
+            protein: parseInt(thisMeal.protein) + parseInt(protein) - parseInt(oldFood.protein),
+            carbs: parseInt(thisMeal.carbs) + parseInt(carbs) - parseInt(oldFood.carbs),
+            fat: parseInt(thisMeal.fat) + parseInt(fat) - parseInt(oldFood.fat),
+            calories: parseInt(thisMeal.calories) + parseInt(calories) - parseInt(oldFood.calories)
         });
 
         const myFood = await Food.findById(foodId);

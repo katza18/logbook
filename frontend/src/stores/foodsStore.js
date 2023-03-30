@@ -9,10 +9,10 @@ const foodsStore = create((set) => ({
     emptyFood: {
         serving: "",
         name: "",
-        protein: "",
-        carbs: "",
-        fat: "",
-        calories: "",
+        protein: "0",
+        carbs: "0",
+        fat: "0",
+        calories: "0",
         notes: "",
         meal: null,
         log: null
@@ -71,10 +71,24 @@ const foodsStore = create((set) => ({
         const { emptyFood, foods } = foodsStore.getState();
 
         const res = await axios.post("/foods", emptyFood);
+        const food = res.data.myFood;
 
         set({
-            foods: [...foods, res.data.myFood]
+            foods: [...foods, res.data.myFood],
+            updateForm: {
+                serving: food.serving,
+                name: food.name,
+                protein: food.protein,
+                carbs: food.carbs,
+                fat: food.fat,
+                calories: food.calories,
+                notes: food.notes,
+                _id: food._id,
+                meal: food.meal,
+                log: food.log
+            }
         });
+
         set((state) => {
             return {
                 emptyFood: {

@@ -30,7 +30,7 @@ export default function DateAccordion({date, log_id}) {
                         protein += parseInt(meal.protein);
                     }
                 })}
-                {date}: Calories - {calories} | Protein - {protein} | Carbs - {carbs} | Fat - {fat} |
+                {date.substring(5,10)}: Calories - {calories} | Protein - {protein} | Carbs - {carbs} | Fat - {fat} |
             </Accordion.Header>
             <Accordion.Body>
                 {/* eslint-disable-next-line */}
