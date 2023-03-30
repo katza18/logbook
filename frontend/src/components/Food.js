@@ -20,8 +20,8 @@ export default function Food({food}) {
             <td>{food.fat}</td>
             <td>{food.calories}</td>
             <td>{food.notes}</td>
-            <td className="delete" onClick={async() => { await store.deleteFood(food._id); store2.fetchMeals(food.log)}}>X</td>
-            <td onClick={() => store.toggleUpdate(food)}>Update</td>
+            <td className="delete" onClick={async() => { await store.deleteFood(food._id); store2.fetchMeals(food.log)}}><span className="material-symbols-outlined delete">delete</span></td>
+            <td onClick={() => store.toggleUpdate(food)}><span className="material-symbols-outlined edit">edit_square</span></td>
         </tr>
     );
 }

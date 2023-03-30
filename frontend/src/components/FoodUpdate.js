@@ -14,8 +14,8 @@ export default function FoodUpdate({food}) {
             <td><input name="fat" value={store.updateForm.fat} onChange={store.updateUpdateFormField} /></td>
             <td><input name="calories" value={store.updateForm.calories} onChange={store.updateUpdateFormField} /></td>
             <td><input name="notes" value={store.updateForm.notes} onChange={store.updateUpdateFormField} /></td>
-            <td className="delete"onClick={() => {store.deleteFood(food._id); store2.fetchMeals()}}>X</td>
-            <td>Update</td>
+            <td className="delete"onClick={() => {store.deleteFood(food._id); store2.fetchMeals()}}><span className="material-symbols-outlined delete">delete</span></td>
+            <td></td>
         </tr>
     );
 }

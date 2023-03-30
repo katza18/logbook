@@ -17,7 +17,27 @@
     overflow: scroll;
 }
 
-.delete:hover, .edit:hover {
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-body p {
+    align-self: flex-start;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.delete:hover, .edit:hover, .log-delete:hover, .log-edit:hover {
     cursor: pointer;
 }
 
@@ -33,6 +53,15 @@
 
 .edit {
     margin-right: 1em;
+}
+
+.log-delete {
+    padding-left: 0.5em;
+    padding-top: 0.1em;
+}
+
+.log-edit {
+
 }
 
 .delete, .edit {

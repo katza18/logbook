@@ -20,11 +20,17 @@ export default function Log({log}) {
 
   return (
     <Card bg="primary">
-      <Card.Header>{log.title}</Card.Header>
-      <Card.Body>
+      <Card.Header className="card-header">
+        <div>
+          {log.title}
+        </div>
+        <div className="actions">
+          <span onClick={() => store.toggleUpdate(log)} className="material-symbols-outlined log-edit">edit_square</span>
+          <span onClick={() => store.deleteLog(log._id)} className="material-symbols-outlined log-delete">delete</span>
+        </div>
+      </Card.Header>
+      <Card.Body className="card-body">
         <p>{log.body}</p>
-        <Button onClick={() => store.deleteLog(log._id)}>Delete</Button>
-        <Button onClick={() => store.toggleUpdate(log)}>Update</Button>
         <Button onClick={() => navigate(path)}>Open</Button>
       </Card.Body>
     </Card>
