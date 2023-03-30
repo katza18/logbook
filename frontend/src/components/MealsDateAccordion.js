@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import mealsStore from '../stores/mealsStore';
 import Meal from './Meal';
@@ -6,7 +6,8 @@ import Meal from './Meal';
 export default function DateAccordion({date, log_id}) {
     const store = mealsStore(store => {
         return {
-            meals: store.meals
+            meals: store.meals,
+            fetchMeals: store.fetchMeals
         }
     });
 
@@ -23,7 +24,7 @@ export default function DateAccordion({date, log_id}) {
                         protein += parseInt(meal.protein);
                     }
                 })}
-                {date.substring(5,10)}: Calories - {calories} | Protein - {protein} | Carbs - {carbs} | fat - {fat} |
+                {date.substring(5,10)}: Calories - {calories} | Protein - {protein} | Carbs - {carbs} | Fat - {fat} |
             </Accordion.Header>
             <Accordion.Body>
                 {/* eslint-disable-next-line */}

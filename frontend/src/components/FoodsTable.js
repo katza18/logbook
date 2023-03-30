@@ -4,7 +4,7 @@ import foodsStore from '../stores/foodsStore';
 import mealsStore from '../stores/mealsStore';
 import Food from './Food';
 
-export default function FoodsTable({meal_id, log}) {
+export default function FoodsTable({meal_id, log_id}) {
     const store = foodsStore();
     const store2 = mealsStore(store2 => {
         return {
@@ -14,10 +14,8 @@ export default function FoodsTable({meal_id, log}) {
     });
 
     useEffect(() => {
-        store2.fetchMeals(log);
+        store2.fetchMeals(log_id);
     });
-
-    let protein = 0, carbs = 0, fat = 0, calories = 0;
 
     return(
         <form form="update" onSubmit={store.updateFood}>
@@ -39,10 +37,6 @@ export default function FoodsTable({meal_id, log}) {
                 {store.foods && store.foods.map(food => {
                     if (food.meal && food.meal.localeCompare(meal_id) === 0) {
                         //correct date/meal
-                        if (food.protein) protein += parseInt(food.protein);
-                        if (food.carbs) carbs += parseInt(food.carbs);
-                        if (food.fat) fat += parseInt(food.fat);
-                        if(food.calories) calories += parseInt(food.calories);
                         return <Food food={food} key={food._id} />;
                     }
                 })}
@@ -53,10 +47,10 @@ export default function FoodsTable({meal_id, log}) {
                             <tr key={meal._id}>
                                 <th></th>
                                 <th>Totals:</th>
-                                <th>{protein}</th>
-                                <th>{carbs}</th>
-                                <th>{fat}</th>
-                                <th>{calories}</th>
+                                <th>{meal.protein}</th>
+                                <th>{meal.carbs}</th>
+                                <th>{meal.fat}</th>
+                                <th>{meal.calories}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>

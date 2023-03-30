@@ -22,9 +22,6 @@ export default function Meals({log_id}) {
             arr.push(item);
         }
     }
-    useEffect(() => {
-        store.fetchMeals(log_id);
-    }, [])
 
     return(
         <div className="central-items">
