@@ -9,11 +9,11 @@ import Button from 'react-bootstrap/Button';
 export default function Meals({log_id}) {
     const store = mealsStore(store => {
         return {
-            meals: store.meals,
             toggleCreate: store.toggleCreate,
             fetchMeals: store.fetchMeals
         }
     });
+    const meals = mealsStore((state) => state.meals)
     const set = new Set();
     const arr = [];
 
@@ -28,7 +28,7 @@ export default function Meals({log_id}) {
             <h1>Meals</h1>
 
             {/* create a unique list of dates */}
-            {store.meals && store.meals.map(meal => {
+            {meals && meals.map(meal => {
                 if(meal.log && meal.log.localeCompare(log_id.id) === 0)
                     set.add(meal.date);
             })}

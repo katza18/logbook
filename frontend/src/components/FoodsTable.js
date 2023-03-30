@@ -5,20 +5,23 @@ import mealsStore from '../stores/mealsStore';
 import Food from './Food';
 
 export default function FoodsTable({meal_id, log_id}) {
-    const store = foodsStore();
+    const store = foodsStore(store => {
+        return {
+            updateFood: store.updateFood,
+            updateForm: store.updateForm,
+            createFood: store.createFood
+        }
+    });
+    const foods = foodsStore((state)=> state.foods );
+    const meals = mealsStore((state) => state.meals);
     const store2 = mealsStore(store2 => {
         return {
-            meals: store2.meals,
             fetchMeals: store2.fetchMeals
         }
     });
 
-    useEffect(() => {
-        store2.fetchMeals(log_id);
-    });
-
     return(
-        <form form="update" onSubmit={store.updateFood}>
+        <form form="update" onSubmit={async(e) => {await store.updateFood(e); store2.fetchMeals(log_id)}}>
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
@@ -34,14 +37,14 @@ export default function FoodsTable({meal_id, log_id}) {
             </thead>
             <tbody>
                 {/* eslint-disable-next-line*/}
-                {store.foods && store.foods.map(food => {
+                {foods && foods.map(food => {
                     if (food.meal && food.meal.localeCompare(meal_id) === 0) {
                         //correct date/meal
                         return <Food food={food} key={food._id} />;
                     }
                 })}
                 {/* eslint-disable-next-line */}
-                {store2.meals && store2.meals.map(meal => {
+                {meals && meals.map(meal => {
                     if(meal._id.localeCompare(meal_id) === 0) {
                         return(
                             <tr key={meal._id}>
