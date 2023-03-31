@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import foodsStore from '../stores/foodsStore';
 import mealsStore from '../stores/mealsStore';
 import Food from './Food';
+import Button from 'react-bootstrap/Button';
 
 export default function FoodsTable({meal_id, log_id}) {
     const store = foodsStore(store => {
@@ -63,8 +63,8 @@ export default function FoodsTable({meal_id, log_id}) {
                 })}
             </tbody>
         </Table>
-            <button onClick={(e) => store.createFood(e, meal_id)}>Add</button>
-            {store.updateForm._id && <button type="submit">Update</button>}
+            <Button onClick={(e) => store.createFood(e, meal_id)}>Add</Button>
+            {store.updateForm._id && <Button type="submit">Update</Button>}
         </form>
     );
 }
