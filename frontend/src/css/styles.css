@@ -77,6 +77,12 @@ td > span.edit {
     margin-right: 0;
 }
 
+.form {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+}
 
 .create-button {
     margin-top: 1em;
