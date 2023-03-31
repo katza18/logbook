@@ -13,16 +13,16 @@ export default function BuildPage() {
                 <Col>
                     <h2>Program Builder</h2>
                     <div>Primary Weight Training Goal:</div>
-                    <select>
-                        <option selected disabled></option>
+                    <select defaultValue="">
+                        <option disabled></option>
                         <option>Strength</option>
                         <option>Hypertrophy</option>
                         <option>Power</option>
                         <option>Muscular Endurance</option>
                     </select>
                     <div>Secondary Weight Training Goal (optional):</div>
-                    <select>
-                        <option selected disabled></option>
+                    <select defaultValue="">
+                        <option disabled></option>
                         <option>Strength</option>
                         <option>Hypertrophy</option>
                         <option>Power</option>
@@ -30,8 +30,8 @@ export default function BuildPage() {
                         <option>None</option>
                     </select>
                     <div>Training days per week:</div>
-                    <select>
-                        <option selected disabled></option>
+                    <select defaultValue="">
+                        <option disabled></option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -40,8 +40,8 @@ export default function BuildPage() {
                         <option>6</option>
                     </select>
                     <div>Training Split:</div>
-                    <select>
-                        <option selected disabled></option>
+                    <select defaultValue="">
+                        <option disabled></option>
                         <option>Body Parts</option>
                         <option>Push / Pull / Legs</option>
                         <option>Upper / Lower</option>
