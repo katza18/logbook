@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const mealsStore = create((set) => ({
     meals: null,
-    create: false,
 
     createForm: {
         title: "",
@@ -29,12 +28,6 @@ const mealsStore = create((set) => ({
         carbs: "",
         fat: "",
         protein: ""
-    },
-
-    setCreateFalse: () => {
-        set({
-            create: false
-        });
     },
 
     updateCreateFormField: (e) => {
@@ -115,12 +108,6 @@ const mealsStore = create((set) => ({
                 date: meal.date,
                 _id: meal._id
             }
-        });
-    },
-
-    toggleCreate: () => {
-        set({
-            create: true
         });
     },
 

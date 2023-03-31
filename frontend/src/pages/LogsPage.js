@@ -8,8 +8,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MyNavbar from '../components/MyNavbar';
 
+
 export default function LogsPage() {
     const store = logsStore();
+
 
     useEffect(() => {
         store.fetchLogs();
@@ -23,8 +25,8 @@ export default function LogsPage() {
             <Row className="body">
                 <Col>
                     <Logs />
-                    <UpdateForm />
                     <CreateForm />
+                    <UpdateForm />
                 </Col>
             </Row>
         </Container>

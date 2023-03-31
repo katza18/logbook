@@ -1,15 +1,23 @@
 import logsStore from "../stores/logsStore";
 import React from "react";
+import { useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function CreateForm() {
     const store = logsStore();
+    const [show, setShow] = useState(false);
 
-    if (store.updateForm._id || !store.create) return;
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return(
         <div className="form">
-            <h2>Create Logbook</h2>
-            <form onSubmit={store.createLog}>
+        <Button className="create-button" onClick={handleShow}>Create New Logbook</Button>
+        <Modal show={show} onHide={handleClose}backdrop="static" keyboard={false}>
+            <Modal.Header><h2>Create Logbook</h2></Modal.Header>
+            <form onSubmit={(e) => {store.createLog(e); handleClose()}}>
+            <Modal.Body>
                 <label htmlFor="title">Logbook Name:</label>
                 <input name="title" value={store.createForm.title} onChange={store.updateCreateFormField}/>
 
@@ -22,9 +30,13 @@ export default function CreateForm() {
 
                 <label htmlFor="body">Logbook Description:</label>
                 <textarea name="body" value={store.createForm.body} onChange={store.updateCreateFormField}/>
-                <button onClick={() => {store.setCreateFalse()}}>Cancel</button>
-                <button type="submit">Create Log</button>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+                <Button type="submit">Create Log</Button>
+            </Modal.Footer>
             </form>
+        </Modal>
         </div>
     );
 }

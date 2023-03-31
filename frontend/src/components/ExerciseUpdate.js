@@ -52,8 +52,8 @@ export default function ExerciseUpdate({exercise, number}) {
                 </select>
             </td>
             <td><input name="notes" value={store.updateForm.notes} onChange={store.updateUpdateFormField} /></td>
-            <td className="delete"onClick={() => store.deleteExercise(exercise._id)}>X</td>
-            <td>Update</td>
+            <td className="delete"onClick={() => store.deleteExercise(exercise._id)}><span className="material-symbols-outlined delete">delete</span></td>
+            <td></td>
         </tr>
     );
 }

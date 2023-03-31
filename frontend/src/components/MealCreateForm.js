@@ -1,15 +1,23 @@
 import mealsStore from "../stores/mealsStore";
-import React from "react";
+import React, {useState} from "react";
+import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+
 
 export default function MealCreateForm({log_id}) {
     const store = mealsStore();
+    const [show, setShow] = useState(false);
 
-    if (store.updateForm._id || !store.create) return;
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return(
         <div className="form">
-            <h2>Create Meal</h2>
-            <form onSubmit={(e) => store.createMeal(e, log_id)}>
+            <Button className="create-button" onClick={handleShow}>Create New Meal</Button>
+            <Modal show={show} onHide={handleClose}backdrop="static" keyboard={false}>
+            <Modal.Header><h2>Create Meal</h2></Modal.Header>
+            <form onSubmit={(e) => {store.createMeal(e, log_id); handleClose()}}>
+                <Modal.Body>
                 <label htmlFor="title">Meal Name:</label>
                 <input name="title" value={store.createForm.title} onChange={store.updateCreateFormField}/>
 
@@ -18,10 +26,13 @@ export default function MealCreateForm({log_id}) {
 
                 <label htmlFor="date">Date: </label>
                 <input name="date" type="date" value={store.createForm.date} onChange={store.updateCreateFormField} />
-
-                <button onClick={() => {store.setCreateFalse()}}>Cancel</button>
-                <button type="submit">Create Meal</button>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+                    <Button type="submit">Create Meal</Button>
+                </Modal.Footer>
             </form>
+            </Modal>
         </div>
     );
 }

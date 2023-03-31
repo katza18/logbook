@@ -4,8 +4,6 @@ import axios from 'axios';
 const logsStore = create((set) => ({
     logs: null,
 
-    create: false,
-
     createForm: {
         title: "",
         body: "",
@@ -17,12 +15,6 @@ const logsStore = create((set) => ({
         title: "",
         body: "",
         _id: null
-    },
-
-    setCreateFalse: () => {
-        set({
-            create: false
-        });
     },
 
     updateCreateFormField: (e) => {
@@ -91,12 +83,6 @@ const logsStore = create((set) => ({
                 body: log.body,
                 _id: log._id
             }
-        });
-    },
-
-    toggleCreate: (log) => {
-        set({
-            create: true
         });
     },
 

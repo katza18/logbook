@@ -1,10 +1,9 @@
 import mealsStore from "../stores/mealsStore";
-import React, { useEffect } from 'react';
+import React from 'react';
 import CreateForm from './MealCreateForm';
 import UpdateForm from "./MealUpdateForm";
 import DateAccordion from "./MealsDateAccordion";
 import Accordion from 'react-bootstrap/Accordion';
-import Button from 'react-bootstrap/Button';
 
 export default function Meals({log_id}) {
     const store = mealsStore(store => {
@@ -41,7 +40,6 @@ export default function Meals({log_id}) {
                 })}
             </Accordion>
 
-            <Button className="create-button" onClick={() => store.toggleCreate()}>Create New Meal</Button>
             <CreateForm log_id={log_id} />
             <UpdateForm />
         </div>

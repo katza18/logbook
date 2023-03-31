@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const workoutsStore = create((set) => ({
     workouts: null,
-    create: false,
 
     createForm: {
         title: "",
@@ -18,12 +17,6 @@ const workoutsStore = create((set) => ({
         body: "",
         date: null,
         _id: null
-    },
-
-    setCreateFalse: () => {
-        set({
-            create: false
-        });
     },
 
     updateCreateFormField: (e) => {
@@ -104,12 +97,6 @@ const workoutsStore = create((set) => ({
                 date: workout.date,
                 _id: workout._id
             }
-        });
-    },
-
-    toggleCreate: (workout) => {
-        set({
-            create: true
         });
     },
 

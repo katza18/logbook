@@ -1,15 +1,23 @@
 import workoutsStore from "../stores/workoutsStore";
 import React from "react";
+import Button from "react-bootstrap/esm/Button";
+import { useState } from "react";
+import Modal from 'react-bootstrap/Modal';
 
 export default function WorkoutCreateForm({log_id}) {
     const store = workoutsStore();
+    const [show, setShow] = useState(false);
 
-    if (store.updateForm._id || !store.create) return;
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return(
         <div className="form">
-            <h2>Create Workout</h2>
-            <form onSubmit={(e) => store.createWorkout(e, log_id)}>
+            <Button className="create-button" onClick={handleShow}>Create New Workout</Button>
+            <Modal show={show} onHide={handleClose}backdrop="static" keyboard={false}>
+            <Modal.Header><h2>Create Workout</h2></Modal.Header>
+            <form onSubmit={(e) => {store.createWorkout(e, log_id); handleClose()}}>
+            <Modal.Body>
                 <label htmlFor="title">Workout Name:</label>
                 <input name="title" value={store.createForm.title} onChange={store.updateCreateFormField}/>
 
@@ -18,10 +26,13 @@ export default function WorkoutCreateForm({log_id}) {
 
                 <label htmlFor="date">Date: </label>
                 <input name="date" type="date" value={store.createForm.date} onChange={store.updateCreateFormField} />
-
-                <button onClick={() => {store.setCreateFalse()}}>Cancel</button>
-                <button type="submit">Create Workout</button>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+                <Button type="submit">Create Workout</Button>
+            </Modal.Footer>
             </form>
+            </Modal>
         </div>
     );
 }

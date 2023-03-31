@@ -42,7 +42,6 @@ export default function Workouts({log_id}) {
             </Accordion>
 
             <CreateForm log_id={log_id} />
-            <Button variant="primary" className="create-button" onClick={() => store.toggleCreate()}>Create New Workout</Button>
             <UpdateForm />
         </div>
     );
