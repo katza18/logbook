@@ -11,6 +11,7 @@ export default function BuildPage() {
             </Row>
             <Row className="body">
                 <Col>
+                <form>
                     <h2>Program Builder</h2>
                     <div>Primary Weight Training Goal:</div>
                     <select defaultValue="">
@@ -51,6 +52,7 @@ export default function BuildPage() {
 
                     <div>Primary Exercises: </div>
                     <div>Assistance Exercises: </div>
+                </form>
                 </Col>
             </Row>
         </Container>

@@ -16,7 +16,6 @@ async function signup(req, res) {
         console.log(err);
         res.sendStatus(400);
     }
-
 }
 
 async function login(req, res) {
@@ -53,6 +52,22 @@ async function login(req, res) {
     }
 }
 
+async function updateAccount(req, res) {
+    try {
+        //get BW, height, sex, and goal from request
+        const { bodyweight, height, sex, goal } = req.body;
+
+        //Update parameters
+        await User.findOneAndUpdate({ _id: req.user._id }, { bodyweight, height, sex, goal });
+
+        //Success
+        res.sendStatus(200);
+    } catch(err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
+}
+
 function logout(req, res) {
     try {
         res.clearCookie("Authorization");
@@ -75,5 +90,6 @@ module.exports = {
     signup,
     login,
     logout,
-    authorize
+    authorize,
+    updateAccount
 }

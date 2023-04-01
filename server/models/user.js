@@ -14,7 +14,11 @@ const userSchema = new mongoose.Schema({
     },
     logs: [
         {type: mongoose.Schema.Types.ObjectId, ref: 'Log'}
-    ]
+    ],
+    goal: String,
+    bodyweight: Number,
+    height: Number,
+    sex: String
 });
 
 const User = mongoose.model("User", userSchema);

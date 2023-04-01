@@ -25,7 +25,7 @@ export default function MealCreateForm({log_id}) {
                 <textarea name="body" value={store.createForm.body} onChange={store.updateCreateFormField}/>
 
                 <label htmlFor="date">Date: </label>
-                <input name="date" type="date" value={store.createForm.date} onChange={store.updateCreateFormField} />
+                <input required name="date" type="date" value={store.createForm.date} onChange={store.updateCreateFormField} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>Cancel</Button>
