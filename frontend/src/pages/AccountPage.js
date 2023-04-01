@@ -2,19 +2,19 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MyNavbar from "../components/MyNavbar";
-import { create } from 'zustand'
-
-const accountStore = create((set) => ({
-    units: "",
-    imperial: () => set({units: "imperial"}),
-    metric: () => set({units: "metric"})
-  }))
+import Button from 'react-bootstrap/Button';
+import accountStore from '../stores/accountStore';
+import Alert from 'react-bootstrap/Alert';
 
 export default function AccountPage() {
-
     const units = accountStore((state) => state.units);
     const metric = accountStore((state) => state.metric);
     const imperial = accountStore((state) => state.imperial);
+    const updated = accountStore((state) => state.updated);
+    const setUpdated = accountStore((state) => state.setUpdated);
+    const updateForm = accountStore((state) => state.updateForm);
+    const updateAccount = accountStore((state) => state.updateAccount);
+    const updateUpdateFormField = accountStore((state) => state.updateUpdateFormField);
 
     return(
         <Container>
@@ -24,9 +24,9 @@ export default function AccountPage() {
             <Row className="body">
                 <Col>
                     <h2>Account Settings:</h2>
-                    <form>
+                    <form onSubmit={(e) => {updateAccount(e); setUpdated(true)}}>
                         <div>Nutritional Goal:</div>
-                        <select>
+                        <select name="goal" value={updateForm.goal} onChange={updateUpdateFormField}>
                             <option></option>
                             <option>Fat Loss</option>
                             <option>Weight Maintenance</option>
@@ -34,27 +34,38 @@ export default function AccountPage() {
                         </select>
 
                         <div>Biological Sex:</div>
-                        <select>
+                        <select name="sex" value={updateForm.sex} onChange={updateUpdateFormField}>
                             <option></option>
                             <option>Male</option>
                             <option>Female</option>
                         </select>
 
                         <div>Units:</div>
-                        <input type="radio" name="unit" value="imperial" id="imperial" onChange={imperial}/>
-                        <label htmlFor="imperial">Imperial</label>
-                        <input type="radio" name="unit" value="metric" id="metric" onChange={metric}/>
-                        <label htmlFor="metric">Metric</label>
+                        <label><input type="radio" checked={updateForm.unit === "imperial"} name="unit" value="imperial" onChange={(e) => {imperial(); updateUpdateFormField(e)}}/>Imperial</label>
+                        <label><input type="radio" checked={updateForm.unit === "metric"} name="unit" value="metric" onChange={(e) => {metric(); updateUpdateFormField(e)}}/>Metric</label>
+
 
                         <div>Height:</div>
-                        <input type="number" />
+                        <input name="height" type="number" value={updateForm.height} onChange={updateUpdateFormField}/>
                         {units && units.localeCompare("metric") === 0 && <span>cm</span>}
                         {units && units.localeCompare("imperial") === 0 && <span>in</span>}
 
                         <div>Weight:</div>
-                        <input type="number" />
+                        <input name="bodyweight" type="number" value={updateForm.bodyweight} onChange={updateUpdateFormField}/>
                         {units && units.localeCompare("metric") === 0 && <span>kg</span>}
                         {units && units.localeCompare("imperial") === 0 && <span>lb</span>}
+
+                        <div>
+                            <Button type="submit">Update Settings</Button>
+                        </div>
+                        { updated &&
+                        <div>
+                            <Alert variant="success" onClose={() => setUpdated(false)} dismissible>
+                            <Alert.Heading>Success</Alert.Heading>
+                            <p> Your account has been updated. </p>
+                            </Alert>
+                        </div> }
+
                     </form>
                 </Col>
             </Row>

@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
         {type: mongoose.Schema.Types.ObjectId, ref: 'Log'}
     ],
     goal: String,
-    bodyweight: Number,
-    height: Number,
+    bodyweight: String,
+    height: String,
     sex: String
 });
 
