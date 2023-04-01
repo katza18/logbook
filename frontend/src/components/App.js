@@ -9,6 +9,7 @@ import WorkoutsPage from "../pages/WorkoutsPage";
 import MealsPage from '../pages/MealsPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BuildPage from "../pages/BuildPage";
+import AccountPage from "../pages/AccountPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/logs/:id/meals" element={<RequireAuth><MealsPage /></RequireAuth>} />
 
           <Route path="/build" element={<RequireAuth><BuildPage /></RequireAuth>} />
+          <Route path="/settings" element={<RequireAuth><AccountPage /></RequireAuth>} />
 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
