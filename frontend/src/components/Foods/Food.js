@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import foodsStore from "../stores/foodsStore";
+import foodsStore from "../../stores/foodsStore";
 import FoodUpdate from "./FoodUpdate";
-import mealsStore from "../stores/mealsStore";
+import mealsStore from "../../stores/mealsStore";
 
 export default function Food({food}) {
     const store = foodsStore();

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import mealsStore from '../stores/mealsStore';
+import mealsStore from '../../stores/mealsStore';
 import Meal from './Meal';
 
 export default function DateAccordion({date, log_id}) {

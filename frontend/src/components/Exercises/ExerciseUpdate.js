@@ -1,4 +1,4 @@
-import exercisesStore from "../stores/exercisesStore";
+import exercisesStore from "../../stores/exercisesStore";
 
 export default function ExerciseUpdate({exercise, number}) {
     const store = exercisesStore();

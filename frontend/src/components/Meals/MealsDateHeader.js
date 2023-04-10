@@ -1,4 +1,4 @@
-import mealsStore from '../stores/mealsStore';
+import mealsStore from '../../stores/mealsStore';
 import Accordion from 'react-bootstrap/Accordion';
 
 export default function MealsDateHeader({date}) {

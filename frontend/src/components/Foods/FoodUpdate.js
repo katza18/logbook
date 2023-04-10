@@ -1,5 +1,5 @@
-import foodsStore from "../stores/foodsStore";
-import mealsStore from "../stores/mealsStore";
+import foodsStore from "../../stores/foodsStore";
+import mealsStore from "../../stores/mealsStore";
 
 export default function FoodUpdate({food}) {
     const store = foodsStore();

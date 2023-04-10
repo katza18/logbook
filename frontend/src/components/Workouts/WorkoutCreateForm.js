@@ -1,4 +1,4 @@
-import workoutsStore from "../stores/workoutsStore";
+import workoutsStore from "../../stores/workoutsStore";
 import React from "react";
 import Button from "react-bootstrap/esm/Button";
 import { useState } from "react";

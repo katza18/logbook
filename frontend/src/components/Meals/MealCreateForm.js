@@ -1,4 +1,4 @@
-import mealsStore from "../stores/mealsStore";
+import mealsStore from "../../stores/mealsStore";
 import React, {useState} from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button";

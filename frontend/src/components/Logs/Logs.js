@@ -1,4 +1,4 @@
-import logsStore from "../stores/logsStore";
+import logsStore from "../../stores/logsStore";
 import React from 'react';
 import Log from "./Log";
 

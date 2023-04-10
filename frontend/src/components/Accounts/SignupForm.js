@@ -1,5 +1,5 @@
 import React from "react";
-import authStore from "../stores/authStore";
+import authStore from "../../stores/authStore";
 import { useNavigate } from 'react-router-dom';
 
 export default function SignupForm() {

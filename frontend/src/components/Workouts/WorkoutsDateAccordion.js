@@ -1,6 +1,6 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import workoutsStore from '../stores/workoutsStore';
+import workoutsStore from '../../stores/workoutsStore';
 import Workout from './Workout';
 
 export default function DateAccordion({date, log_id}) {

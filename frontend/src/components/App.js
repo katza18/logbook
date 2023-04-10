@@ -2,7 +2,7 @@ import React from "react";
 import LogsPage from "../pages/LogsPage";
 import LoginPage from '../pages/LoginPage';
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
-import RequireAuth from "./RequireAuth";
+import RequireAuth from "./Accounts/RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
 import WorkoutsPage from "../pages/WorkoutsPage";

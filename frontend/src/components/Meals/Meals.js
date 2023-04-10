@@ -1,4 +1,4 @@
-import mealsStore from "../stores/mealsStore";
+import mealsStore from "../../stores/mealsStore";
 import React from 'react';
 import CreateForm from './MealCreateForm';
 import UpdateForm from "./MealUpdateForm";

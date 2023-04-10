@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Meals from '../components/Meals';
+import Meals from '../components/Meals/Meals';
 import mealsStore from '../stores/mealsStore';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';

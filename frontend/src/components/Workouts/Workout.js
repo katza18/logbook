@@ -1,8 +1,8 @@
-import workoutsStore from "../stores/workoutsStore";
+import workoutsStore from "../../stores/workoutsStore";
 import React, { useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import ExercisesTable from './ExercisesTable';
-import exercisesStore from "../stores/exercisesStore";
+import ExercisesTable from '../Exercises/ExercisesTable';
+import exercisesStore from "../../stores/exercisesStore";
 
 export default function Workout({workout}) {
 

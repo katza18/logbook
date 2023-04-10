@@ -1,11 +1,9 @@
-import workoutsStore from "../stores/workoutsStore";
+import workoutsStore from "../../stores/workoutsStore";
 import React from 'react';
 import Workout from "./Workout";
 import CreateForm from './WorkoutCreateForm';
 import Accordion from 'react-bootstrap/Accordion';
-import Button from 'react-bootstrap/Button';
 import UpdateForm from './WorkoutUpdateForm';
-import DateAccordion from "./WorkoutsDateAccordion";
 
 export default function Workouts({log_id}) {
     const store = workoutsStore();

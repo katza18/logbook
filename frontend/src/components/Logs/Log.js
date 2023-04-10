@@ -1,4 +1,4 @@
-import logsStore from "../stores/logsStore";
+import logsStore from "../../stores/logsStore";
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';

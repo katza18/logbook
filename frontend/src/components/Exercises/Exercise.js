@@ -1,4 +1,4 @@
-import exercisesStore from "../stores/exercisesStore";
+import exercisesStore from "../../stores/exercisesStore";
 import ExerciseUpdate from "./ExerciseUpdate";
 
 export default function Exercise({exercise, number}) {

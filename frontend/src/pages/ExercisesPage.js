@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MyNavbar from '../components/MyNavbar';
-import ExercisesTable from '../components/ExercisesTable';
+import ExercisesTable from '../components/Exercises/ExercisesTable';
 import { useParams } from 'react-router-dom';
 
 export default function ExercisesPage() {

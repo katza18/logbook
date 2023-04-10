@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import authStore from "../stores/authStore";
+import authStore from "../../stores/authStore";
 import { Navigate } from 'react-router-dom';
 
 export default function RequireAuth(props) {

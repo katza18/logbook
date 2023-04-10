@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import Workouts from '../components/Workouts';
-import UpdateForm from '../components/WorkoutUpdateForm.js';
+import Workouts from '../components/Workouts/Workouts';
 import workoutsStore from '../stores/workoutsStore';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

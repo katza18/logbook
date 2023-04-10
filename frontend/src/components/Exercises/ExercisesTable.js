@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import exercisesStore from '../stores/exercisesStore';
+import exercisesStore from '../../stores/exercisesStore';
 import Exercise from './Exercise';
 import ExerciseStats from './ExerciseStats';
 import Col from 'react-bootstrap/Col';

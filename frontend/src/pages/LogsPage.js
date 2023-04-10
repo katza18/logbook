@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import CreateForm from '../components/LogCreateForm';
-import Logs from '../components/Logs';
-import UpdateForm from '../components/LogUpdateForm';
+import CreateForm from '../components/Logs/LogCreateForm';
+import Logs from '../components/Logs/Logs';
+import UpdateForm from '../components/Logs/LogUpdateForm';
 import logsStore from '../stores/logsStore';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

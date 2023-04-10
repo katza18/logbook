@@ -1,8 +1,8 @@
-import mealsStore from "../stores/mealsStore";
+import mealsStore from "../../stores/mealsStore";
 import React, {useEffect} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import FoodsTable from "./FoodsTable";
-import foodsStore from "../stores/foodsStore";
+import FoodsTable from "../Foods/FoodsTable";
+import foodsStore from "../../stores/foodsStore";
 
 
 export default function Meal({meal, log_id}) {
