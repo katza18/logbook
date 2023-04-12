@@ -40,6 +40,9 @@ export default function AccountPage() {
                             <option>Female</option>
                         </select>
 
+                        <div>Age:</div>
+                        <input name="age" type="number" value={updateForm.age} onChange={updateUpdateFormField} />
+
                         <div>Units:</div>
                         <label><input type="radio" checked={updateForm.unit === "imperial"} name="unit" value="imperial" onChange={(e) => {imperial(); updateUpdateFormField(e)}}/>Imperial</label>
                         <label><input type="radio" checked={updateForm.unit === "metric"} name="unit" value="metric" onChange={(e) => {metric(); updateUpdateFormField(e)}}/>Metric</label>
@@ -54,6 +57,16 @@ export default function AccountPage() {
                         <input name="bodyweight" type="number" value={updateForm.bodyweight} onChange={updateUpdateFormField}/>
                         {units && units.localeCompare("metric") === 0 && <span>kg</span>}
                         {units && units.localeCompare("imperial") === 0 && <span>lb</span>}
+
+                        <div>Activity Level:</div>
+                        <select name="activity" value={updateForm.activity} onChange={updateUpdateFormField}>
+                            <option></option>
+                            <option value="1.2">Not Active</option>
+                            <option value="1.375">Somewhat Active (1-3 hours per week)</option>
+                            <option value="1.55">Moderately Active (4-6 hours per week)</option>
+                            <option value="1.725">Very Active (7-9 hours per week)</option>
+                            <option value="1.9">Extremely Active (10+ hours per week)</option>
+                        </select>
 
                         <div>
                             <Button type="submit">Update Settings</Button>

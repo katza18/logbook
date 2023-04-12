@@ -55,10 +55,10 @@ async function login(req, res) {
 async function updateAccount(req, res) {
     try {
         //get BW, height, sex, and goal from request
-        const { bodyweight, height, sex, goal } = req.body;
+        const { bodyweight, height, sex, goal, activity, age } = req.body;
 
         //Update parameters
-        await User.findOneAndUpdate({ _id: req.user._id }, { bodyweight, height, sex, goal });
+        await User.findOneAndUpdate({ _id: req.user._id }, { bodyweight, height, sex, goal, activity, age });
 
         //Success
         res.sendStatus(200);

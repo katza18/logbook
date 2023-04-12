@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema({
     goal: String,
     bodyweight: String,
     height: String,
-    sex: String
+    sex: String,
+    activity: Number,
+    age: Number
 });
 
 const User = mongoose.model("User", userSchema);

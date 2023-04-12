@@ -9,7 +9,9 @@ const accountStore = create((set) => ({
         sex: "",
         height: "",
         goal: "",
-        unit: ""
+        unit: "",
+        activity: "",
+        age: ""
     },
 
     updated: false,
@@ -40,7 +42,7 @@ const accountStore = create((set) => ({
     updateAccount: async (e) => {
         e.preventDefault();
 
-        const {updateForm: {bodyweight, sex, height, goal, unit}} = accountStore.getState();
+        const {updateForm: {bodyweight, sex, height, goal, unit, age, activity}} = accountStore.getState();
         let heightUnit, weightUnit;
 
         if (unit.localeCompare("metric") === 0) {
@@ -53,14 +55,16 @@ const accountStore = create((set) => ({
         const unitBodyweight = bodyweight + weightUnit;
         const unitHeight = height + heightUnit;
 
-        await axios.put('/account', {bodyweight: unitBodyweight, sex, height: unitHeight, goal});
+        await axios.put('/account', {bodyweight: unitBodyweight, sex, height: unitHeight, goal, age, activity});
 
         set({
             updateForm: {
                 bodyweight: 0,
                 height: 0,
                 sex: "",
-                goal: ""
+                goal: "",
+                activity: "",
+                age: ""
             }
         });
     }
