@@ -75,7 +75,7 @@ export default function AccountPage() {
                         <div>
                             <Alert variant="success" onClose={() => setUpdated(false)} dismissible>
                             <Alert.Heading>Success</Alert.Heading>
-                            <p> Your account has been updated. </p>
+                            <p> Your account has been updated. You can now find calorie and protein suggestions in your nutrition logs. </p>
                             </Alert>
                         </div> }
 
