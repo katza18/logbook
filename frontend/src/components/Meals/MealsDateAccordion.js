@@ -39,7 +39,7 @@ export default function DateAccordion({date, log_id}) {
             </Accordion.Header>
             <Accordion.Body className="accordion-body">
                 <ProgressBar now={calories / user.calories * 100} label={`Calories (${calories}/${user.calories})`} />
-
+                <ProgressBar now={protein / user.protein * 100} label={`Protein (${protein}/${user.protein})`} />
                 {/* eslint-disable-next-line */}
                 {meals && meals.map(meal => {
                     if(meal.log && meal.date && meal.log.localeCompare(log_id.id) === 0 && meal.date.localeCompare(date) === 0){
