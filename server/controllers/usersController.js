@@ -57,8 +57,30 @@ async function updateAccount(req, res) {
         //get BW, height, sex, and goal from request
         const { bodyweight, height, sex, goal, activity, age } = req.body;
 
+        //Calculate Recommended Calories
+        //Calculate TDEE (total daily energy expenditure)
+        if (sex.localeCompare("male") === 0) {
+            //male equation
+            const tdee = ((10 * bodyweight) + (6.25 * height) - (5 * age) + 5) * activity;
+        } else {
+            //female equation
+            const tdee = ((10 * bodyweight) + (6.25 * height) - (5 * age) - 161) * activity;
+        }
+
+        //Calculate recommended calories
+        if(goal.localeCompare("Weight Gain")) {
+            //gain - 15-20% surplus
+            const calories = tdee * 1.175;
+        } else if (goal.localeCompare("Weight Loss")) {
+            //lose - 15-20% deficit
+            const calories = tdee * 0.825;
+        } else {
+            //maintain - stays the same
+            const calories = tdee;
+        }
+
         //Update parameters
-        await User.findOneAndUpdate({ _id: req.user._id }, { bodyweight, height, sex, goal, activity, age });
+        await User.findOneAndUpdate({ _id: req.user._id }, { bodyweight, height, sex, goal, activity, age, calories });
 
         //Success
         res.sendStatus(200);
