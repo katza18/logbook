@@ -28,6 +28,12 @@
     align-items: center;
 }
 
+.accordion-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 .card-body p {
     align-self: flex-start;
 }
@@ -58,10 +64,6 @@
 .log-delete {
     padding-left: 0.5em;
     padding-top: 0.1em;
-}
-
-.log-edit {
-
 }
 
 .delete, .edit {

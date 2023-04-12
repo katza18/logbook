@@ -4,6 +4,11 @@ import { create } from "zustand";
 const accountStore = create((set) => ({
     units: "",
 
+    user: {
+        calories: 0,
+        protein: 150,
+    },
+
     updateForm: {
         bodyweight: "",
         sex: "",
@@ -38,6 +43,13 @@ const accountStore = create((set) => ({
     imperial: () => set({units: "imperial"}),
 
     metric: () => set({units: "metric"}),
+
+    fetchUser: async () => {
+        const res = await axios.get("/user");
+        set({
+            user: res.data.user
+        })
+    },
 
     updateAccount: async (e) => {
         e.preventDefault();

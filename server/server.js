@@ -27,6 +27,7 @@ app.post("/signup", usersCtrl.signup);
 app.post("/login", usersCtrl.login);
 app.get("/logout", usersCtrl.logout);
 app.get("/auth", requireAuth.requireAuth, usersCtrl.authorize);
+app.get("/user", requireAuth.requireAuth, usersCtrl.fetchUser);
 app.put("/account", requireAuth.requireAuth, usersCtrl.updateAccount);
 
 //Log routes

@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import mealsStore from '../../stores/mealsStore';
 import Meal from './Meal';
+import { ProgressBar } from 'react-bootstrap';
+import accountStore from '../../stores/accountStore';
 
 export default function DateAccordion({date, log_id}) {
     const store = mealsStore(store => {
@@ -9,11 +11,13 @@ export default function DateAccordion({date, log_id}) {
             fetchMeals: store.fetchMeals
         }
     });
-
+    const fetchUser = accountStore(state => state.fetchUser);
+    const user = accountStore(state => state.user);
     const meals = mealsStore(state => state.meals);
 
     useEffect(() => {
         store.fetchMeals(log_id);
+        fetchUser();
         // eslint-disable-next-line
       }, []);
 
@@ -33,7 +37,9 @@ export default function DateAccordion({date, log_id}) {
                 <div><h3>{date.substring(5,10)}</h3></div>
                 <div className="daily-intake"><h5>{calories} Calories | {protein}g Protein | {carbs}g Carbs | {fat}g Fat </h5></div>
             </Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Body className="accordion-body">
+                <ProgressBar now={calories / user.calories * 100} label={`Calories (${calories}/${user.calories})`} />
+
                 {/* eslint-disable-next-line */}
                 {meals && meals.map(meal => {
                     if(meal.log && meal.date && meal.log.localeCompare(log_id.id) === 0 && meal.date.localeCompare(date) === 0){

@@ -52,6 +52,16 @@ async function login(req, res) {
     }
 }
 
+async function fetchUser(req, res) {
+    try {
+        const user = await User.findOne({_id: req.user._id});
+        res.json({user});
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
+}
+
 async function updateAccount(req, res) {
     try {
         //get BW, height, sex, and goal from request
@@ -91,5 +101,6 @@ module.exports = {
     login,
     logout,
     authorize,
-    updateAccount
+    updateAccount,
+    fetchUser
 }
