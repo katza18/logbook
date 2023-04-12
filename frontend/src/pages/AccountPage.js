@@ -26,7 +26,7 @@ export default function AccountPage() {
                     <h2>Account Settings:</h2>
                     <form onSubmit={(e) => {updateAccount(e); setUpdated(true)}}>
                         <div>Nutritional Goal:</div>
-                        <select name="goal" value={updateForm.goal} onChange={updateUpdateFormField}>
+                        <select required name="goal" value={updateForm.goal} onChange={updateUpdateFormField}>
                             <option></option>
                             <option>Fat Loss</option>
                             <option>Weight Maintenance</option>
@@ -34,32 +34,32 @@ export default function AccountPage() {
                         </select>
 
                         <div>Biological Sex:</div>
-                        <select name="sex" value={updateForm.sex} onChange={updateUpdateFormField}>
+                        <select required name="sex" value={updateForm.sex} onChange={updateUpdateFormField}>
                             <option></option>
                             <option>Male</option>
                             <option>Female</option>
                         </select>
 
                         <div>Age:</div>
-                        <input name="age" type="number" value={updateForm.age} onChange={updateUpdateFormField} />
+                        <input required name="age" type="number" value={updateForm.age} onChange={updateUpdateFormField} />
 
                         <div>Units:</div>
-                        <label><input type="radio" checked={updateForm.unit === "imperial"} name="unit" value="imperial" onChange={(e) => {imperial(); updateUpdateFormField(e)}}/>Imperial</label>
+                        <label><input required type="radio" checked={updateForm.unit === "imperial"} name="unit" value="imperial" onChange={(e) => {imperial(); updateUpdateFormField(e)}}/>Imperial</label>
                         <label><input type="radio" checked={updateForm.unit === "metric"} name="unit" value="metric" onChange={(e) => {metric(); updateUpdateFormField(e)}}/>Metric</label>
 
 
                         <div>Height:</div>
-                        <input name="height" type="number" value={updateForm.height} onChange={updateUpdateFormField}/>
+                        <input required name="height" type="number" value={updateForm.height} onChange={updateUpdateFormField}/>
                         {units && units.localeCompare("metric") === 0 && <span>cm</span>}
                         {units && units.localeCompare("imperial") === 0 && <span>in</span>}
 
                         <div>Weight:</div>
-                        <input name="bodyweight" type="number" value={updateForm.bodyweight} onChange={updateUpdateFormField}/>
+                        <input required name="bodyweight" type="number" value={updateForm.bodyweight} onChange={updateUpdateFormField}/>
                         {units && units.localeCompare("metric") === 0 && <span>kg</span>}
                         {units && units.localeCompare("imperial") === 0 && <span>lb</span>}
 
                         <div>Activity Level:</div>
-                        <select name="activity" value={updateForm.activity} onChange={updateUpdateFormField}>
+                        <select required name="activity" value={updateForm.activity} onChange={updateUpdateFormField}>
                             <option></option>
                             <option value="1.2">Not Active</option>
                             <option value="1.375">Somewhat Active (1-3 hours per week)</option>

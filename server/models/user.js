@@ -16,11 +16,12 @@ const userSchema = new mongoose.Schema({
         {type: mongoose.Schema.Types.ObjectId, ref: 'Log'}
     ],
     goal: String,
-    bodyweight: String,
-    height: String,
+    bodyweight: Number,
+    height: Number,
     sex: String,
     activity: Number,
-    age: Number
+    age: Number,
+    calories: Number
 });
 
 const User = mongoose.model("User", userSchema);

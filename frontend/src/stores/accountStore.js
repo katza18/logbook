@@ -43,24 +43,45 @@ const accountStore = create((set) => ({
         e.preventDefault();
 
         const {updateForm: {bodyweight, sex, height, goal, unit, age, activity}} = accountStore.getState();
-        let heightUnit, weightUnit;
+        let metricWeight, metricHeight, calories, tdee;
 
-        if (unit.localeCompare("metric") === 0) {
-            heightUnit = "cm";
-            weightUnit = "kg";
+        //Convert imperial units to metric
+        if (unit.localeCompare("imperial") === 0) {
+            metricWeight = parseInt(bodyweight) / 2.2;
+            metricHeight = parseInt(height) * 2.54;
         } else {
-            heightUnit = "in";
-            weightUnit = "lb";
+            metricWeight = parseInt(bodyweight);
+            metricHeight = parseInt(height);
         }
-        const unitBodyweight = bodyweight + weightUnit;
-        const unitHeight = height + heightUnit;
 
-        await axios.put('/account', {bodyweight: unitBodyweight, sex, height: unitHeight, goal, age, activity});
+        //Calculate TDEE (total daily energy expenditure)
+        if (sex.localeCompare("Male") === 0) {
+            //male equation
+            tdee = ((10 * metricWeight) + (6.25 * metricHeight) - (5 * age) + 5) * activity;
+        } else {
+            //female equation
+            tdee = ((10 * metricWeight) + (6.25 * metricHeight) - (5 * age) - 161) * activity;
+        }
+
+        //Calculate recommended calories
+        if(goal.localeCompare("Weight Gain") === 0) {
+            //gain - 15% surplus
+            calories = tdee * 1.15;
+        } else if (goal.localeCompare("Weight Loss") === 0) {
+            //lose - 15% deficit
+            calories = tdee * 0.85;
+        } else {
+            //maintain - stays the same
+            calories = tdee;
+        }
+
+        //Update Database
+        await axios.put('/account', {bodyweight: metricWeight, sex, height: metricHeight, goal, age, activity, calories});
 
         set({
             updateForm: {
-                bodyweight: 0,
-                height: 0,
+                bodyweight: "",
+                height: "",
                 sex: "",
                 goal: "",
                 activity: "",
