@@ -65,10 +65,10 @@ async function fetchUser(req, res) {
 async function updateAccount(req, res) {
     try {
         //get BW, height, sex, and goal from request
-        const { bodyweight, height, sex, goal, activity, age, calories } = req.body;
+        const { bodyweight, height, sex, goal, activity, age, calories, protein } = req.body;
 
         //Update parameters
-        await User.findOneAndUpdate({ _id: req.user._id }, { bodyweight, height, sex, goal, activity, age, calories });
+        await User.findOneAndUpdate({ _id: req.user._id }, { bodyweight, height, sex, goal, activity, age, calories, protein });
 
         //Success
         res.sendStatus(200);

@@ -21,7 +21,8 @@ const userSchema = new mongoose.Schema({
     sex: String,
     activity: Number,
     age: Number,
-    calories: Number
+    calories: Number,
+    protein: Number
 });
 
 const User = mongoose.model("User", userSchema);

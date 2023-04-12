@@ -55,7 +55,7 @@ const accountStore = create((set) => ({
         e.preventDefault();
 
         const {updateForm: {bodyweight, sex, height, goal, unit, age, activity}} = accountStore.getState();
-        let metricWeight, metricHeight, calories, tdee;
+        let metricWeight, metricHeight, calories, tdee, protein;
 
         //Convert imperial units to metric
         if (unit.localeCompare("imperial") === 0) {
@@ -75,20 +75,23 @@ const accountStore = create((set) => ({
             tdee = ((10 * metricWeight) + (6.25 * metricHeight) - (5 * age) - 161) * activity;
         }
 
-        //Calculate recommended calories
+        //Calculate recommended calories/protein
         if(goal.localeCompare("Weight Gain") === 0) {
             //gain - 15% surplus
             calories = tdee * 1.15;
+            protein = metricWeight * 2.2 * 0.8;
         } else if (goal.localeCompare("Weight Loss") === 0) {
             //lose - 15% deficit
             calories = tdee * 0.85;
+            protein = metricWeight * 2.2;
         } else {
             //maintain - stays the same
             calories = tdee;
+            protein = metricWeight * 2.2 * 0.8;
         }
 
         //Update Database
-        await axios.put('/account', {bodyweight: metricWeight, sex, height: metricHeight, goal, age, activity, calories});
+        await axios.put('/account', {bodyweight: metricWeight, sex, height: metricHeight, goal, age, activity, calories: Math.trunc(calories), protein: Math.trunc(protein)});
 
         set({
             updateForm: {
