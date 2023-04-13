@@ -16,7 +16,9 @@ const accountStore = create((set) => ({
         goal: "",
         unit: "",
         activity: "",
-        age: ""
+        age: "",
+        overrideCal: "",
+        overridePro: ""
     },
 
     updated: false,
@@ -93,8 +95,10 @@ const accountStore = create((set) => ({
         //Update Database
         await axios.put('/account', {bodyweight: metricWeight, sex, height: metricHeight, goal, age, activity, calories: Math.trunc(calories), protein: Math.trunc(protein)});
 
-        set({
+        set(state => {
+            return {
             updateForm: {
+                ...state.updateForm,
                 bodyweight: "",
                 height: "",
                 sex: "",
@@ -102,8 +106,38 @@ const accountStore = create((set) => ({
                 activity: "",
                 age: ""
             }
+        }
         });
+    },
+
+    updateCalories: async (e) => {
+        e.preventDefault();
+        const {updateForm: {overrideCal}} = accountStore.getState();
+        await axios.put('/account', {calories: overrideCal});
+
+        set(state => {
+            return {
+                updateForm: {
+                    ...state.updateForm,
+                    overrideCal: ""
+                }
+        }});
+    },
+
+    updateProtein: async (e) => {
+        e.preventDefault();
+        const {updateForm: {overridePro}} = accountStore.getState();
+        await axios.put('/account', {protein: overridePro});
+
+        set(state => {
+            return {
+                updateForm: {
+                    ...state.updateForm,
+                    overridePro: ""
+                }
+        }});
     }
+
 }));
 
 export default accountStore;
