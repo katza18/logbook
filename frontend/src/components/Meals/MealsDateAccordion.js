@@ -8,7 +8,8 @@ import accountStore from '../../stores/accountStore';
 export default function DateAccordion({date, log_id}) {
     const store = mealsStore(store => {
         return {
-            fetchMeals: store.fetchMeals
+            fetchMeals: store.fetchMeals,
+            updateDateCaloriesMap: store.updateDateCaloriesMap
         }
     });
     const fetchUser = accountStore(state => state.fetchUser);
@@ -18,6 +19,7 @@ export default function DateAccordion({date, log_id}) {
     useEffect(() => {
         store.fetchMeals(log_id);
         fetchUser();
+        store.updateDateCaloriesMap(date, calories);
         // eslint-disable-next-line
       }, []);
 
@@ -34,6 +36,7 @@ export default function DateAccordion({date, log_id}) {
                         protein += parseInt(meal.protein);
                     }
                 })}
+
                 <div><h3>{date.substring(5,10)}</h3></div>
                 <div className="daily-intake"><h5>{calories} Calories | {protein}g Protein | {carbs}g Carbs | {fat}g Fat </h5></div>
             </Accordion.Header>

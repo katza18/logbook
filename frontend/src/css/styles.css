@@ -10,6 +10,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    gap: 1em;
 }
 
 .card {
@@ -88,6 +90,10 @@ td > span.edit {
 
 .create-button {
     margin-top: 1em;
+}
+
+.back-button {
+    position: absolute;
 }
 
 td > input {

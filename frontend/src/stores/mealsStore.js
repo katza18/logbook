@@ -4,6 +4,8 @@ import axios from 'axios';
 const mealsStore = create((set) => ({
     meals: null,
 
+    dateCaloriesMap: {},
+
     createForm: {
         title: "",
         body: "",
@@ -126,6 +128,17 @@ const mealsStore = create((set) => ({
             meals: newMeals,
             updateForm: {
                 title: "", body: "", _id: null, date: null
+            }
+        });
+    },
+
+    updateDateCaloriesMap: (date, calories) => {
+        set(state => {
+            return {
+                dateCaloriesMap: {
+                    ...state.dateCaloriesMap,
+                    [date]: calories,
+                }
             }
         });
     }

@@ -25,7 +25,7 @@ export default function WorkoutsPage() {
             </Row>
             <Row className="body">
                 <Col>
-                    <Button variant="secondary" onClick={() => navigate(-1)}>Back</Button>
+                    <Button variant="secondary" onClick={() => navigate(-1)} className='back-button'>Back</Button>
                     <Workouts log_id={_id} />
                 </Col>
             </Row>

@@ -13,7 +13,7 @@ export default function MealCreateForm({log_id}) {
 
     return(
         <div className="form">
-            <Button className="create-button" onClick={handleShow}>Create New Meal</Button>
+            <Button onClick={handleShow}>Create New Meal</Button>
             <Modal show={show} onHide={handleClose}backdrop="static" keyboard={false}>
             <Modal.Header><h2>Create Meal</h2></Modal.Header>
             <form onSubmit={(e) => {store.createMeal(e, log_id); handleClose()}}>

@@ -28,7 +28,7 @@ export default function Workouts({log_id}) {
 
             {convertSet(set)}
 
-            <Accordion alwaysOpen>
+            <Accordion alwaysOpen className="central-items">
                 {/*arr && arr.map(date => {
                     return <DateAccordion date={date} log_id={log_id} key={date}/>
                 })*/}

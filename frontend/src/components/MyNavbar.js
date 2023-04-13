@@ -10,7 +10,7 @@ export default function MyNavbar() {
     });
 
     return (
-    <Navbar variant="dark" fixed="top" bg="dark" id="navbar">
+    <Navbar variant="ligth" fixed="top" bg="white" id="navbar">
         <Nav defaultActiveKey="/" as="ul" id="navbar-left">
             <Nav.Item as="li">
                 <LinkContainer to="/"><Nav.Link className="nav-button">Dashboard</Nav.Link></LinkContainer>

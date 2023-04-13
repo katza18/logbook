@@ -13,7 +13,7 @@ export default function WorkoutCreateForm({log_id}) {
 
     return(
         <div className="form">
-            <Button className="create-button" onClick={handleShow}>Create New Workout</Button>
+            <Button onClick={handleShow}>Create New Workout</Button>
             <Modal show={show} onHide={handleClose}backdrop="static" keyboard={false}>
             <Modal.Header><h2>Create Workout</h2></Modal.Header>
             <form onSubmit={(e) => {store.createWorkout(e, log_id); handleClose()}}>
