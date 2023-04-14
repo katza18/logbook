@@ -89,7 +89,8 @@ td > span.edit {
 }
 
 .carousel-item {
-    padding: 2em 2em;
+    padding: 0 3em;
+    padding-bottom: 2em;
 }
 
 .create-button {
