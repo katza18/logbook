@@ -6,6 +6,8 @@ const mealsStore = create((set) => ({
 
     dateCaloriesMap: {},
 
+    protein: [],
+
     createForm: {
         title: "",
         body: "",
@@ -141,6 +143,17 @@ const mealsStore = create((set) => ({
                 }
             }
         });
+    },
+
+    updateProtein: (protein) => {
+        set(state => {
+            return {
+                protein: [
+                    ...state.protein,
+                    protein
+                ]
+            }
+        })
     }
   }));
 

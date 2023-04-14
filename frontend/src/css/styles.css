@@ -88,6 +88,10 @@ td > span.edit {
     width: 100%;
 }
 
+.carousel-item {
+    padding: 2em 2em;
+}
+
 .create-button {
     margin-top: 1em;
 }

@@ -9,7 +9,8 @@ export default function DateAccordion({date, log_id}) {
     const store = mealsStore(store => {
         return {
             fetchMeals: store.fetchMeals,
-            updateDateCaloriesMap: store.updateDateCaloriesMap
+            updateDateCaloriesMap: store.updateDateCaloriesMap,
+            updateProtein: store.updateProtein
         }
     });
     const fetchUser = accountStore(state => state.fetchUser);
@@ -20,6 +21,7 @@ export default function DateAccordion({date, log_id}) {
         store.fetchMeals(log_id);
         fetchUser();
         store.updateDateCaloriesMap(date, calories);
+        store.updateProtein(protein);
         // eslint-disable-next-line
       }, []);
 

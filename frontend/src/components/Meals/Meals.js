@@ -5,10 +5,9 @@ import UpdateForm from "./MealUpdateForm";
 import DateAccordion from "./MealsDateAccordion";
 import Accordion from 'react-bootstrap/Accordion';
 import MealsGraph from "./MealsGraph";
-import accountStore from "../../stores/accountStore";
+import MealsGraphCarousel from "./MealsGraphCarousel";
 
 export default function Meals({log_id}) {
-
     const store = mealsStore(store => {
         return {
             toggleCreate: store.toggleCreate,
@@ -16,12 +15,8 @@ export default function Meals({log_id}) {
         }
     });
     const meals = mealsStore((state) => state.meals);
-    const dateCaloriesMap = mealsStore((state) => state.dateCaloriesMap);
     const set = new Set();
     const arr = [];
-    const dates = Object.keys(dateCaloriesMap);
-    const calories = Object.values(dateCaloriesMap);
-    const recCal = accountStore((state) => state.user.calories);
 
     function convertSet(set) {
         for(const item of set) {
@@ -32,7 +27,7 @@ export default function Meals({log_id}) {
     return(
         <div className="central-items">
             <h1>Meals</h1>
-            <MealsGraph dates={dates} calories={calories} recCal={recCal}/>
+            <MealsGraphCarousel />
 
             {/* create a unique list of dates */}
             {meals && meals.map(meal => {

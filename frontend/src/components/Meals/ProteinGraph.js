@@ -1,18 +1,18 @@
 import Plot from 'react-plotly.js';
 
-export default function MealsGraph({dates, calories, recCal}) {
-    const rec = Array(dates.length).fill(recCal);
+export default function ProteinGraph({dates, protein, recPro}) {
+    const rec = Array(dates.length).fill(recPro);
 
     const data = [{
         x: dates,
-        y: calories,
+        y: protein,
         type: 'scatter',
-        name: 'Calories'
+        name: 'Protein'
       }, {
         x: dates,
         y: rec,
         type: 'scatter',
-        name: 'Recommended Calories'
+        name: 'Recommended Protein'
       }
     ];
 
@@ -24,7 +24,7 @@ export default function MealsGraph({dates, calories, recCal}) {
             type: 'date',
         },
         yaxis: {
-            title: 'Calories',
+            title: 'Protein',
         },
         margin: {
             t: 0,
